@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    
 }
 
 body {
@@ -10,24 +11,68 @@ body {
 .homeFont {
     color: #FC6E3E;
     text-align: center;
+    font-family: 'Cairo', sans-serif;
+    
 }
+
+
+.center-div {
+    height: 100vh;
+    flex-direction: column;
+    /* اجرب اشيل  */
+    /* justify-content: center; */
+    align-items: center;
+    display: flex;
+    width: 100%;
+}
+
+.mlhm{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 8.5rem;
+    height: 8.5vh;
+    border-radius: 1rem 0 0rem 1rem;
+    background-color: rgb(255, 255, 255);
+    
+}
+
+.mlhm img{
+    width: 100%;
+    height: 100%;    
+    object-fit: cover;
+}
+
+.logo-nsm3k{
+    text-align: center;
+}
+
+.logo-nsm3k img{
+    width: 65%;
+}
+
 .box {
     background-color:whitesmoke;
     padding: 10px;
     width: 50%;
     display: block;
-    margin: auto;
+    margin: 1.5rem 0;
+    text-align: center;
     border-radius: 20px;
 }
 
-.center-div {
-    height: 100vh;
-    flex-direction: column;
-    justify-content: center;
-    display: flex;
-    width: 100%;
+.box .icon{
+    font-size: 3rem;
+    color: #4A148C;
 }
 
+.footer {
+    font-family: 'Cairo', sans-serif;
+    color: white;
+    margin: 10px;
+    font-size: 20px;
+    text-align: center;
+}
 :root{
     --purple:#4A148C;
     --lightPurple:#6C1B9C;
