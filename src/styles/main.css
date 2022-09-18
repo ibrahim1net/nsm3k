@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #4A148C;
+}
+.homeFont {
+    color: #FC6E3E;
+    text-align: center;
+}
+.box {
+    background-color:whitesmoke;
+    padding: 10px;
+    width: 50%;
+    display: block;
+    margin: auto;
+    border-radius: 20px;
+}
+
+.center-div {
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    display: flex;
+    width: 100%;
+}
+
+:root{
+    --purple:#4A148C;
+    --lightPurple:#6C1B9C;
+    --orange: #FC6E3E;
+}
