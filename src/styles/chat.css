@@ -1,0 +1,59 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: whitesmoke;
+    color: black;
+}
+
+.nav {
+    display: flex;
+    /* justify-content: space-around; */
+    align-items: center;
+}
+
+.nav .arrowIcon{
+   font-size: 1.3rem;
+   margin-right: 7.5rem;
+}
+
+.nav .logo-img{
+    margin-top: .5rem;
+    margin-right: 2rem;
+}
+
+.switchContainer{
+    display: flex;
+    background-color: var(--lightPurple);
+    color: whitesmoke;
+    padding: .3rem rem;
+    width: 5.5rem;
+    border-radius: 1rem;
+    justify-content: space-between;
+}
+
+.switchContainer .active{
+    background-color: var(--orange);
+    border-radius: 1rem;
+}
+
+.switchContainer .switch1{
+    width: 50%;
+    transition: all .1s ease;
+}
+
+.switchContainer .switch2 {
+    width: 50%;
+    transition: all .1s ease;
+}
+
+
+:root {
+    --purple: #4A148C;
+    --lightPurple: #6C1B9C;
+    --orange: #FC6E3E;
+    --red: #BB2D3A;
+}

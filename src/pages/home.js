@@ -3,13 +3,18 @@ import '../styles/main.css'
 import {TiPlusOutline} from "react-icons/ti"
 import { FiTwitter, FiYoutube, FiInstagram} from "react-icons/fi"
 import {ImEnter} from 'react-icons/im'
-import logo from '../icons/images/nsm3k.png';
+import logo from '../icons/images/nsm3k1.png';
 import mlhmLogo from "../icons/images/mlhm.png"
 
+import PopEnter from '../shared/PopEnter'
+
 function Home() {
+
+  const [pop, setPop] = React.useState(false)
+
   return (
+    <>
     <div className='center-div'>
-      
       <div className='mlhm'>
           <img src={mlhmLogo} alt="logo mlhm"/>
       </div>
@@ -22,19 +27,21 @@ function Home() {
         <TiPlusOutline className='icon'/>
         <p className='homeFont'>انشاء محادثة</p>
       </div>
-      <div className='box'>
+      <div className='box' onClick={e=>setPop(!pop)}>
         <ImEnter className='icon'/>
         <p className='homeFont'>دخول الى محادثة</p>
       </div>
 
+    </div>
       <div className='footer'>
           <p>MULHAM</p>
-          <FiTwitter />
-          <FiYoutube />
-          <FiInstagram />
+          <FiTwitter className='footer_icon'/>
+          <FiYoutube className='footer_icon'/>
+          <FiInstagram className='footer_icon'/>
         <p>@جميع الحقوق لدى نسمعك المطورين</p>
       </div>
-    </div>
+      {pop?<PopEnter setPop={setPop}/>: ''}
+    </>
   )
 }
 
