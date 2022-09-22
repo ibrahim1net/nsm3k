@@ -69,6 +69,10 @@ body {
     color: var(--purple);
 }
 
+.box .buttons-img{
+    width: 70%;
+}
+
 .footer {
     font-family: 'Cairo', sans-serif;
     color: white;
