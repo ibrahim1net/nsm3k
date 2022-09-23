@@ -46,6 +46,26 @@ body {
     object-fit: cover;
 }
 
+.invite {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: whitesmoke;
+    padding: 1rem;
+    border-radius: 0 0 1rem 0rem;
+    border-right: #FC6E3E 3px solid;
+    border-bottom: #FC6E3E 3px solid;
+    color: black;
+}
+
+.invite h4{
+    border-bottom: 1px #6C1B9C solid;
+}
+
+.invite img{
+    width: 5rem;
+}
+
 .logo-nsm3k{
     text-align: center;
 }

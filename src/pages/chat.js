@@ -4,15 +4,17 @@ import {IoIosArrowBack,} from "react-icons/io"
 import logo from "../icons/images/nsm3k2.png"
 import Keyboard from '../shared/keyboard'
 import {Link, useParams} from 'react-router-dom'
+import QRCode from "react-qr-code"
 
 import io from "socket.io-client";
 // connect to socket io 
-const socket = io.connect('http://51.79.84.228:9000/')
+// const socket = io.connect('http://51.79.84.228:9000/')
+const socket = io.connect('http://localhost:4000')
 
 function Chat(props) {
   const {room} = useParams()
   socket.emit('join-room', room)
-  
+  const [popQr, setPopQr] = React.useState(false)
   const [isIcon, setIsIcon] = React.useState(false)
 
   const switchHandler =()=>{
@@ -43,8 +45,9 @@ function Chat(props) {
   
   React.useEffect(() => {
     socket.on('sendMessage', (data) => {
-      window.scrollTo(0, document.querySelector(".chat-container").scrollHeight);
-      setMessages(prev => [...prev, data])
+      console.log(data)
+      document.querySelector(".chat-container").scrollTop = document.querySelector(".chat-container").scrollHeight 
+      setMessages(prev => [...prev, {msg:data.msg, isMe:false, imgSrc:data.imgSrc}])
     })
 
     return function cleanup() {
@@ -53,14 +56,46 @@ function Chat(props) {
 
   }, [])
   
-  const receiveMessage = (msg) => {
-    setMessages(prev => [...prev, msg])
-  }
+  // const receiveMessage = (msg) => {
+  //   setMessages(prev => [...prev, msg])
+  // }
+
+  let chatArr = []
+
+  chatArr = messages.map(msg=>{
+
+    let imgs = msg.imgSrc.map(img=>{
+      return(<img src={img} alt="img" className='chat-img'/>)
+    })
+
+    return(     msg.isMe ?          
+            <div className='message-container message-me'>
+              <div className='border-me'>
+                <p>{msg.msg} </p>
+                <div className='imgs-chat'>
+                  {imgs}
+                  </div>
+              </div>
+             </div> 
+             :
+            <div className='message-container message-user'>
+                <div className='border-user'>
+                  <p>{msg.msg}</p>
+                <div className='imgs-chat'>
+                  {imgs}
+                  </div>
+                </div>
+            </div>)
+  })
+
   return (
     <div className='center'>
       <div className='nav'>
         <Link to='/'><IoIosArrowBack className='arrowIcon'/></Link>
-        <p>Room id: {room}</p>
+        <div className='code-container'>
+          <QRCode size={50} value={`http://localhost/${room}`}/>
+          <p>رقم الغرفة: {room}</p>
+        </div>
         <div className='logo-img'>
           <img src={logo} alt="logo" />
         </div>
@@ -79,20 +114,7 @@ function Chat(props) {
 
       </div>
       <div className='chat-container'>
-          {messages.map((m) => 
-            m.isMe ?          
-            <div className='message-container message-me'>
-              <div>
-                <p>{m.msg} </p>
-              </div>
-             </div> 
-             :
-            <div className='message-container message-user'>
-                <div className=''>
-                  <p>{m.msg}</p>
-                </div>
-            </div>
-          )}
+        {chatArr}
       </div>
       <Keyboard isIcon={isIcon} message="dwad" socket={socket} room={room} setMessages={setMessages} />
     </div>

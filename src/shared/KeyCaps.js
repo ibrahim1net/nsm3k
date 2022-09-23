@@ -71,9 +71,13 @@ export default function KeyCaps(props){
         const onClickHandler = (event)=>{
             if(props.isIcon){
                 props.setImgSrc(e=> [...e, letter[1]])
+                const text = letter[0]
+                props.setInputField(e=> e += text)
             }else{
                 const text = letter[0]
                 props.setInputField(e=> e += text)
+                props.setImgSrc(e=> [...e, letter[1]])
+
             }
         }
         return(

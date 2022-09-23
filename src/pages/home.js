@@ -3,7 +3,6 @@ import '../styles/main.css'
 import {TiPlusOutline} from "react-icons/ti"
 import { FiTwitter, FiYoutube, FiInstagram} from "react-icons/fi"
 import {ImEnter} from 'react-icons/im'
-
 import logo from '../icons/images/nsm3k1.png';
 import mlhmLogo from "../icons/images/mlhm.png"
 

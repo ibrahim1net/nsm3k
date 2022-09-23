@@ -19,10 +19,14 @@ export default function Keyboard(props){
     const shortcutHandler = (e)=>{
         if(props.isIcon){
             const img = e.currentTarget.children[0].src
-            setImgSrc(e => [...e, img])
-        }else{
             let text = e.currentTarget.children[1].innerHTML
-            setInputField(`${text} `)
+            setImgSrc(e => [...e, img])
+            setInputField(`${text}`)
+        }else{
+            const img = e.currentTarget.children[0].src
+            let text = e.currentTarget.children[1].innerHTML
+            setImgSrc(e => [...e, img])
+            setInputField(`${text}`)
         }
     }
     
@@ -35,10 +39,11 @@ export default function Keyboard(props){
 
     const onsubmitHandler =(e)=>{
         if(inputField.length> 0){
-            props.socket.emit('sendMessage' ,{msg:inputField, room:props.room})
-            props.setMessages(prev=> [...prev , {msg:inputField, isMe: true}])
+            props.socket.emit('sendMessage' ,{msg:inputField, room:props.room, imgSrc:imgSrc})
+            props.setMessages(prev=> [...prev , {msg:inputField, isMe: true, imgSrc:imgSrc}])
             setInputField('')
-            window.scroll(0, document.querySelector(".chat-container").scrollHeight);
+            setImgSrc([])
+            document.querySelector(".chat-container").scrollTop = document.querySelector(".chat-container").scrollHeight 
         }
     }
 

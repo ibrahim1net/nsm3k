@@ -39,7 +39,8 @@ export default function PopEnter(props){
             <div className="layout">
                 <motion.div variants={top} initial="hidden" animate="visible" exit="exit" className="moduleContainer">
                     <div className="moduleMain">
-                        <h2>أدخل الرمز</h2>
+                        <p>QRCode امسح</p>
+                        <h2> او أدخل الغرفة هنا</h2>
                         <input onChange={e=>setRoomId(e.target.value)} type="number"/>
                     </div>
                     <div className="moduleFooter">
